@@ -37,6 +37,7 @@ public class OrganizationsDao {
                 try {
                     rs = stmt.executeQuery(query);
                     while (rs.next()) {
+                        System.out.println("Organization contcats count,\n by organization name "+name+" is: ");
                         System.out.println(rs.getString(1));
                     }
                 } catch (SQLException e) {
