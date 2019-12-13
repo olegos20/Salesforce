@@ -37,10 +37,7 @@ public class OrganizationsDao {
                 try {
                     rs = stmt.executeQuery(query);
                     while (rs.next()) {
-
-                        System.out.println("contact_id : " +contact_id);
-                        System.out.println("first_name : " +first_name);
-                        System.out.println("last_name : "+last_name);
+                        System.out.println(rs.getString(1));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
