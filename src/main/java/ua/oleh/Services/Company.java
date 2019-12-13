@@ -5,18 +5,17 @@ import java.util.Scanner;
 public class Company {
     private static String name;
     private static double budget;
-    private static Employee employee;
     SalaryService salaryService;
     enum Employees{MANAGER, DEVELOPER, SCRUM_MASTER}
-Company(String name, double budget, Employee employee){
+Company(String name, double budget, Employees employees){
         this.name = name;
         this.budget = budget;
-        this.employee = employee;
-        Employees[] employees = Employees.values();
+        Employees[] employees_list = Employees.values();
 
 
 }
     public static void main(String[] args) {
+        Employee employee = new Employee();
         double ratePerHour;
         int workdays;
         System.out.println("Input name");
@@ -29,6 +28,7 @@ Company(String name, double budget, Employee employee){
         System.out.println("Input workdays");
         workdays = sc.nextInt();
         Company company = new Company(name,budget,employee);
+        System.out.println(company.name+company.budget+employee.getSallary(ratePerHour,workdays));
 
     }
 }
