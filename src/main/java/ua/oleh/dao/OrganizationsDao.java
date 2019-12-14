@@ -12,7 +12,7 @@ public class OrganizationsDao {
     long organization_id;
     private static ResultSet rs;
     private static Statement stmt;
-    String sql;
+    private String sql;
     public String getCoutofContactsByName(String name){
         return sql="Select COUNT(organization_name) from organizations where organization_name LIKE'"+name+"'";
     }
