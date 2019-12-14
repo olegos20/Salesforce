@@ -1,26 +1,21 @@
 package ua.oleh.Services;
 import java.util.Scanner;
 
-public class Company {
-
-    private static double ratePerHour;
+public class Company{
+    double sallary;
+    Employee employee = new Employee();
     private Scanner scanner = new Scanner(System.in);
-    private static int workdays;
-    private static String name;
-    private static double budget;
+     static String name;
+    static double budget;
     Employees employees_type;
     enum Employees{
         Manager, Developer, Scrum_Master}
     Company(){
         Company company;
-        SalaryService salaryService = new SalaryService();
         Employees[] employeeses = Employees.values();
         int chose;
-        Employee employee = new Employee();
-        System.out.println("Input name");
+        System.out.println("Input budget");
         Scanner sc = new Scanner(System.in);
-        name = sc.nextLine();
-        System.out.println("Input company budget");
         budget = sc.nextDouble();
         System.out.println("Chose employee type and type it id:");
         for (Employees s:employeeses
@@ -30,14 +25,13 @@ public class Company {
         chose = sc.nextInt();
         switch (chose){
             case  0:company= new Company(name,budget,Employees.Manager);
-                System.out.println("Employee name is:"+name+"\n"+"Employee type is "+company.employees_type);
-                salaryService.pay(company);
+                System.out.println("Employee type is "+company.employees_type);
                 break;
             case 1:company= new Company(name,budget,Employees.Developer);
-                System.out.println("Employee name is:"+name+"\n"+"Employee type is "+company.employees_type);
+                System.out.println("Employee type is "+company.employees_type);
                 break;
             case 2:company= new Company(name,budget,Employees.Scrum_Master);
-                System.out.println("Employee name is:"+name+"\n"+"Employee type is "+company.employees_type);
+                System.out.println("Employee type is "+company.employees_type);
                 break;
         }
     }
@@ -47,8 +41,6 @@ public class Company {
         employees_type= employees;
     }
     public void addEmployee(Employees employees){ String name;
-    int chose;
-    Employee employee = new Employee();
     int workdays;
     double ratePerHour;
     System.out.println("Input name");
@@ -57,11 +49,13 @@ public class Company {
     ratePerHour = scanner.nextDouble();
     System.out.println("Input workdays");
     workdays = scanner.nextInt();
-    System.out.println("Employee salary: "+employee.getSallary(ratePerHour,workdays)+"$");
+    sallary = employee.getSallary(ratePerHour,workdays);
+    System.out.println("Employee name: "+name+"\nsalary: "+sallary+"$");
         }
     public static void main(String[] args) {
-Company company = new Company();
+        SalaryService salaryService = new SalaryService();
+Company company = new Company(name,budget,Employees.Developer);
 company.addEmployee(Employees.Scrum_Master);
-
+salaryService.pay(company);
     }
 }
