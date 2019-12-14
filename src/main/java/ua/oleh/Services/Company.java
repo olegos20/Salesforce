@@ -1,23 +1,21 @@
 package ua.oleh.Services;
-
 import java.util.Scanner;
 
 public class Company {
+    private static double ratePerHour;
+    Scanner scanner;
+    private static int workdays;
     private static String name;
     private static double budget;
-    SalaryService salaryService;
     enum Employees{MANAGER, DEVELOPER, SCRUM_MASTER}
-Company(String name, double budget, Employees employees){
-        this.name = name;
-        this.budget = budget;
-        Employees[] employees_list = Employees.values();
-
-
-}
+    Employees[] employees = Employees.values();
+public void addEmployee(Employee employee){
+employee.getSallary(ratePerHour,workdays);
+        }
     public static void main(String[] args) {
-        Employee employee = new Employee();
-        double ratePerHour;
-        int workdays;
+        int chose;
+        Employees employees;
+        Company company = new Company();
         System.out.println("Input name");
         Scanner sc = new Scanner(System.in);
         name = sc.nextLine();
@@ -27,8 +25,14 @@ Company(String name, double budget, Employees employees){
         ratePerHour = sc.nextDouble();
         System.out.println("Input workdays");
         workdays = sc.nextInt();
-        Company company = new Company(name,budget,employee);
-        System.out.println(company.name+company.budget+employee.getSallary(ratePerHour,workdays));
+        System.out.println("Chose employee type:");
+        for (Employees s:Employees.values()
+             ) {
+            System.out.println(s.ordinal()+""+s);
+        }
+       chose = sc.nextInt();
+
 
     }
+}
 }
